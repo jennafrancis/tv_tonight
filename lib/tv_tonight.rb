@@ -1,5 +1,7 @@
-require "tv_tonight/version"
+require 'open-uri'
+require 'nokogiri'
+require 'pry'
 
-module TvTonight
-  # Your code goes here...
-end
+require_relative "./tv_tonight/version"
+require_relative './tv_tonight/episode'
+require_relative './tv_tonight/cli'
