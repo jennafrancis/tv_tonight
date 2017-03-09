@@ -1,6 +1,5 @@
 class TvTonight::CLI
 
-
   def initialize
   end
 
@@ -19,9 +18,12 @@ class TvTonight::CLI
     while input != "exit"#make this loop. give option to return to list, error message if not valid
       puts "Which show would you like to learn more about? Type list to return to the main list or exit to leave the program."
       input = gets.strip
-      if input.to_i.between?(1,10)
+      if input.to_i > 0
         puts "more tv show info"
         #return series, time, channel, episode, description, rating, etc. on article number which equals input
+      elsif input.downcase == "list"
+        list_shows
+
       else
         puts "Not sure what you meant. Please try again."
       end

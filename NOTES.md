@@ -1,2 +1,4 @@
 - set up files via gem bundle <enter name>
 - follow along avi's setup video for file structure/relations
+- hard code cli to get things working
+- start an episode class

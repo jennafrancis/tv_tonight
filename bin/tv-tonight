@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 
-require './lib/tv_tonight'
+require "bundler/setup"
+require "tv_tonight"
 TvTonight::CLI.new.call
