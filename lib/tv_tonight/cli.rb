@@ -1,15 +1,15 @@
 class TvTonight::CLI
 
-  def initialize
-  end
-
   def call
+    TvTonight::Episode.scrape_episodes
     list_shows
     more_info
+    thanks
   end
 
   def list_shows
-    puts "Top trending shows on tv tonight:"
+    puts "Top trending shows on TV Tonight:"
+    puts "(As reported by TVGuide.com)"
     @shows = TvTonight::Episode.all
     @shows.each.with_index(1) {|show, index| puts "#{index}. #{show.series} - #{show.time} on #{show.network}"}
   end
@@ -32,6 +32,10 @@ class TvTonight::CLI
         puts "Not sure what you meant. Please try again."
       end
     end #while
+  end
+
+  def thanks
+    puts "Thanks for checking what's trending on TV Tonight. Happy Watching!"
   end
 
 end

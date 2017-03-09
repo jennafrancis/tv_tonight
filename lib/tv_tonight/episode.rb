@@ -3,11 +3,7 @@ class TvTonight::Episode
 
   @@all = []
 
-  def initialize
-  end
-
   def self.all
-    TvTonight::Episode.scrape_episodes
     @@all
   end
 
@@ -19,7 +15,6 @@ class TvTonight::Episode
       episode = TvTonight::Episode.new
       episode.name = show.css("h4 .listings-program-link").text.strip
       episode.series = show.css("h3").text.strip
-      # binding.pry
       airing = show.css(".listings-program-airing-info").text
       info = airing.split(" | ")
         air_time = info[0]
