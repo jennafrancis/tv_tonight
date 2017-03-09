@@ -20,12 +20,12 @@ class TvTonight::Episode
       episode.name = show.css("h4").text
       episode.series = show.css("h3").text
       # binding.pry
-      # airing = show.css(".listings-program-airing-info")
-      # info = airing.split(" | ")
-      #   air_time = info[0]
-      #   air_network = info[1]
-      episode.time = "time"
-      episode.network = "network"
+      airing = show.css(".listings-program-airing-info").text
+      info = airing.split(" | ")
+        air_time = info[0]
+        air_network = info[1]
+      episode.time = air_time
+      episode.network = air_network
       episode.description = show.css(".listings-program-description").text
       episode.url = show.css("a").attr("href").text
       @@all << episode
