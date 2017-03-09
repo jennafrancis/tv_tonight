@@ -17,8 +17,8 @@ class TvTonight::Episode
 
     page.css(".listings-program").each do |show|
       episode = TvTonight::Episode.new
-      episode.name = show.css("h4").text
-      episode.series = show.css("h3").text
+      episode.name = show.css("h4 .listings-program-link").text.strip
+      episode.series = show.css("h3").text.strip
       # binding.pry
       airing = show.css(".listings-program-airing-info").text
       info = airing.split(" | ")
@@ -26,7 +26,7 @@ class TvTonight::Episode
         air_network = info[1]
       episode.time = air_time
       episode.network = air_network
-      episode.description = show.css(".listings-program-description").text
+      episode.description = show.css(".listings-program-description").text.strip
       episode.url = show.css("a").attr("href").text
       @@all << episode
     end

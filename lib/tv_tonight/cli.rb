@@ -17,11 +17,14 @@ class TvTonight::CLI
   def more_info
     input = nil
     while input != "exit"#make this loop. give option to return to list, error message if not valid
-      puts "Which show would you like to learn more about? Type list to return to the main list or exit to leave the program."
+      puts "Which show would you like more info about? Type list to return to the main list or exit to leave the program."
       input = gets.strip
-      if input.to_i > 0
+      if input.to_i.between?(1,25)
         selected =  @shows[input.to_i - 1]
-        puts "#{selected.name} #{selected.time} etc."
+        puts "#{selected.series} - #{selected.name}"
+        puts "#{selected.time} on #{selected.network}"
+        puts "#{selected.description}"
+        puts "For Cast, News, Photos and more about #{selected.series}, go to #{selected.url}."
         #return series, time, channel, episode, description, rating, etc. on article number which equals input
       elsif input.downcase == "list"
         list_shows
