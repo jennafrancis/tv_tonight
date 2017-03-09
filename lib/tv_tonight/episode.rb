@@ -1,5 +1,5 @@
 class TvTonight::Episode
-  attr_accessor :title, :series, :channel, :description, :series_url, :time
+  attr_accessor :name, :series, :network, :description, :series_url, :time
 
   @@all = []
 
@@ -7,7 +7,17 @@ class TvTonight::Episode
   end
 
   def self.all
-    @@all
+    show_1 = self.new
+    show_1.name = "Supernatural"
+    show_1.time = "8:00 PM"
+    show_1.network = "NBC"
+
+    show_2 = self.new
+    show_2.name = "SYTYCD"
+    show_2.time = "9:00 PM"
+    show_2.network = "CBS"
+
+    [show_1,show_2]
   end
 
   def scrape_episodes
