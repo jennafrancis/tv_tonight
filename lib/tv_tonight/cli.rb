@@ -16,9 +16,11 @@ class TvTonight::CLI
 
   def more_info
     input = nil
+
     while input != "exit"#make this loop. give option to return to list, error message if not valid
       puts "Which show would you like more info about? Type list to return to the main list or exit to leave the program."
       input = gets.strip
+
       if input.to_i.between?(1,25)
         selected =  @shows[input.to_i - 1]
         puts "#{selected.series} - #{selected.name}"
@@ -32,6 +34,7 @@ class TvTonight::CLI
         puts "Not sure what you meant. Please try again."
       end
     end #while
+    
   end
 
   def thanks
