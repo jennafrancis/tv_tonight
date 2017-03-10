@@ -1,6 +1,6 @@
 # TvTonight
 
-This Ruby Gem provides a CLI to view the 25 top trending shows on tv tonight, as reported by TV Guide.
+This Ruby Gem provides a CLI to view the top trending shows on tv tonight, as reported by TV Guide.
 
 ## Installation
 
