@@ -9,6 +9,7 @@ class TvTonight::CLI
 
   def list_shows
     puts "Top trending shows on TV Tonight:"
+    puts Time.now
     puts "(As reported by TVGuide.com)"
     @shows = TvTonight::Episode.all
     @shows.each.with_index(1) {|show, index| puts "#{index}. #{show.series} - #{show.time} on #{show.network}"}
