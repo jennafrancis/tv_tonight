@@ -1,18 +1,19 @@
 class TvTonight::CLI
 
   def call
-    TvTonight::Episode.scrape_episodes
+    TvTonight::Scraper.scrape_episodes
     list_shows
     more_info
     thanks
   end
 
+
   def list_shows
     puts "Top trending shows on TV Tonight:"
     puts Time.now
     puts "(As reported by TVGuide.com)"
-    @shows = TvTonight::Episode.all
-    @shows.each.with_index(1) {|show, index| puts "#{index}. #{show.series} - #{show.time} on #{show.network}"}
+    shows = TvTonight::Episode.all
+    shows.each.with_index(1) {|show, index| puts "#{index}. #{show.series} - #{show.time} on #{show.network}"}
     puts " "
   end
 
@@ -24,7 +25,7 @@ class TvTonight::CLI
       input = gets.strip
 
       if input.to_i>0
-        selected =  @shows[input.to_i - 1]
+        selected =  TvTonight::Episode.find_by_index(input.to_i - 1)
         if selected == nil
           puts "Not sure what you meant. Please try again."
         else
